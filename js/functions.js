@@ -1,4 +1,5 @@
 let datosConfiguracion;
+
 var sonidoAmbiente = new Audio('audio/fondo.mp3');
 
 function readText(ruta_local) {
@@ -70,8 +71,27 @@ function mostrarPalabrasEnTarjetas(palabras) {
     tarjeta.classList.add('tarjeta');
     tarjeta.innerText = palabra;
 
+    // Agregar event listener para el clic en la tarjeta
+    tarjeta.addEventListener('click', () => {
+      hacerTarjetaGrande(tarjeta, palabra);
+    });
+
     tarjetasContainer.appendChild(tarjeta);
   });
+}
+
+function hacerTarjetaGrande(tarjeta, palabra) {
+  // Verificar si la tarjeta se está expandiendo
+  const seEstaExpandiendo = !tarjeta.classList.contains('tarjeta-grande');
+
+  // Cambiar tamaño de la tarjeta al hacer clic
+  tarjeta.classList.toggle('tarjeta-grande');
+
+  // Reproducir el sonido solo si la tarjeta se está expandiendo
+  if (seEstaExpandiendo) {
+    var sonidoPalabra = new Audio(`audio/palabras/${palabra}.mp3`);
+    reproducirSonido(sonidoPalabra);
+  }
 }
 
 // Ejemplo de una función para desordenar un array
@@ -110,7 +130,7 @@ function gestionarBotonesFooter(contexto, categoria) {
   if (categoria === 'Nivel2' || categoria === 'Nivel3' || categoria === 'Nivel4' || categoria === 'Nivel5') {
     document.getElementById('btnRegresarCategoria').style.display = 'none';
     document.getElementById('btnRegresarInicio').style.display = 'block';
-    // Aquí se agrega o modifica la visibilidad de botones específicamente para 'nivel2'
+    // Aquí puedes agregar o modificar la visibilidad de botones específicamente para 'nivel2'
     // Por ejemplo, mostrar u ocultar botones adicionales que sean relevantes solo para esta categoría
   }
 }
