@@ -99,9 +99,9 @@ body {
 
 .tarjeta {
     background-color: white;
-    /* Fondo blanco */
+    /* Fondo azul */
     color: red;
-    /* Texto rojo*/
+    /* Texto blanco */
     border: 2px solid black;
     /* Borde más oscuro */
     border-radius: 10px;
@@ -354,4 +354,13 @@ body {
     height: 10px;
     background-color: #f00;
     z-index: 9999;
+}
+
+.tarjeta-grande {
+    transform: translate(-50%, -50%) scale(4); /* Centra la tarjeta y aumenta su tamaño */
+    transition: transform 0.3s ease; /* Agrega una transición suave */
+    position: fixed; /* Posición fija para que no se desplace con el desplazamiento de la página */
+    top: 50%; /* La mitad de la altura de la ventana */
+    left: 50%; /* La mitad del ancho de la ventana */
+    z-index: 9999; /* Asegura que esté sobre otros elementos */
 }
